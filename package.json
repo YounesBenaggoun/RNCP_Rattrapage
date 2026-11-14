@@ -1,0 +1,33 @@
+{
+  "name": "rncp_rattrapage",
+  "version": "1.0.0",
+  "description": "bonjour",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YounesBenaggoun/RNCP_Rattrapage.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/YounesBenaggoun/RNCP_Rattrapage/issues"
+  },
+  "homepage": "https://github.com/YounesBenaggoun/RNCP_Rattrapage#readme",
+  "devDependencies": {
+    "@commitlint/cli": "^21.2.4",
+    "@commitlint/config-conventional": "^21.2.4",
+    "husky": "^9.1.7",
+    "nodemon": "^3.1.14"
+  },
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^18.0.10",
+    "express": "^5.3.0"
+  }
+}
