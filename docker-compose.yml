@@ -1,0 +1,35 @@
+services:
+  postgres:
+    image: postgres:18
+    container_name: rncp
+    restart: always
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: enso
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql
+      # ⚠️ Postgres 18 attend /var/lib/postgresql (pas /data) — voir note plus bas
+      - ./init/01_schema.sql:/docker-entrypoint-initdb.d/01_schema.sql:ro
+      - ./init/02_data.sql:/docker-entrypoint-initdb.d/02_data.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -h 127.0.0.1 -U admin -d enso"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  adminer:
+    image: adminer:latest
+    container_name: adminer
+    restart: always
+    ports:
+      - "8080:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+volumes:
+  postgres_data:
