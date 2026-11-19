@@ -9,13 +9,13 @@ export default class PostgresOniRepository extends IOniObersrvation {
         this.pool = pool;
     }
 
-    // async getAll() {
-    //     const tab = await this.pool.query(
-    //         `SELECT year , anomaly as oni , season_index as month
-    //  FROM public.oni_observations
-    //  ORDER BY year ASC, season_index ASC`
-    //     );
-    //     const result = tab.rows;
-    //     return result;
-    // }
+    async getAll() {
+        const tab = await this.pool.query(
+            `SELECT year , anomaly as oni , season_index as month
+     FROM public.oni_observations
+     ORDER BY year ASC, season_index ASC`
+        );
+        const result = tab.rows;
+        return result;
+    }
 }

@@ -1,10 +1,12 @@
 
 import express from "express";
+import cors from 'cors';
 import oniRouter from "./4_Presentation/routes/oni.route.js";
 
 
 
 const app = express();
+app.use(cors());
 
 app.use(express.json());
 
