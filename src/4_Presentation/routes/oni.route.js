@@ -7,6 +7,9 @@ import oniController from "../controllers/oni.controller.js";
 const router = express.Router();
 
 router.get("/", oniController.getAll);
+router.get("/duplicatedData", oniController.findDuplicatedData);
+router.get("/range", oniController.getByRange);
+
 
 router.get("/latest", oniController.latest);
 

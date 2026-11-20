@@ -98,20 +98,7 @@ export default class PostgresOniRepository {
         return rows.map((r) => this._mapRow(r));
     }
 
-    async stats() {
-        const { rows } = await this.pool.query(`
-      SELECT
-        COUNT(*)::int                                                  AS total,
-        COUNT(*) FILTER (WHERE anomaly >= 0.5)::int                    AS el_nino,
-        COUNT(*) FILTER (WHERE anomaly <= -0.5)::int                   AS la_nina,
-        COUNT(*) FILTER (WHERE anomaly > -0.5 AND anomaly < 0.5)::int  AS neutral,
-        MIN(center_date)                                               AS first_date,
-        MAX(center_date)                                               AS last_date,
-        AVG(anomaly)::numeric(6,3)                                     AS avg_anomaly
-      FROM oni_observations
-    `);
-        return rows[0];
-    }
+    
 
     async create(entity) {
         const { rows } = await this.pool.query(
